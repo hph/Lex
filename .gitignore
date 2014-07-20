@@ -1,0 +1,26 @@
+# Database configuration
+config/database.yml
+
+# Production environment variables
+.env.production
+
+# RVM config
+.rvmrc
+
+# Log files
+log/
+
+# Precompiled assets
+public/assets/
+
+# Temporary files
+tmp/
+
+# Bundler config
+.bundle/
+
+# Mac directory attributes file
+.DS_Store
+
+# VIM backup files
+*~
