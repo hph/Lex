@@ -17,6 +17,12 @@ gem 'haml-rails'
 # Alternative database querying library
 gem 'sequel'
 
+# Web scraper and parser
+gem 'nokogiri'
+
+# HTTP requests library
+gem 'httparty'
+
 # Environment variable management
 gem 'dotenv-rails'
 

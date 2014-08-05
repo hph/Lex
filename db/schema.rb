@@ -11,9 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140725192538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chapters", force: true do |t|
+    t.integer "version_id", null: false
+    t.string  "name",       null: false
+    t.integer "ordinal",    null: false
+  end
+
+  create_table "laws", force: true do |t|
+    t.integer  "version_id",   null: false
+    t.integer  "chapter_id",   null: false
+    t.string   "subchapter"
+    t.text     "name",         null: false
+    t.integer  "ordinal"
+    t.datetime "date",         null: false
+    t.text     "raw_html",     null: false
+    t.string   "original_uri", null: false
+  end
+
+  create_table "versions", force: true do |t|
+    t.string "name", null: false
+  end
 
 end
