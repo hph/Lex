@@ -11,6 +11,9 @@ gem 'pg'
 # Application server
 gem 'thin', require: false
 
+# Registration and authentication
+gem 'devise'
+
 # Template engine
 gem 'haml-rails'
 

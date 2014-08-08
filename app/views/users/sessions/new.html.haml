@@ -1,0 +1,7 @@
+%h2 Sign in
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = f.email_field :email, autofocus: true, placeholder: 'Email or username', required: true
+  = f.password_field :password, placeholder: 'Password', required: true, pattern: '.{8,}', title: '8 characters minimum'
+  = f.check_box :remember_me
+  = f.label :remember_me
+  = f.submit 'Sign in'
