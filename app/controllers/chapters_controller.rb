@@ -4,6 +4,7 @@ class ChaptersController < ApplicationController
   end
 
   def show
-    @chapter = Chapter.joins(:laws).find(params[:id])
+    @chapter = Chapter.find(params[:id])
+    @laws = @chapter.laws.group_by(&:subchapter)
   end
 end
