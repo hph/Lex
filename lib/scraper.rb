@@ -19,7 +19,7 @@ module Scraper
       page = node.attributes['href'].value
       chapter_id = Chapter.create(
         version_id: version_id,
-        ordinal: index,
+        ordinal: index + 1,
         name: node.text
       ).id
       scrape_chapter(page, version_id: version_id, chapter_id: chapter_id)
