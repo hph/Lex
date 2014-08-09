@@ -30,6 +30,15 @@ module Scraper
     doc = Nokogiri::HTML(HTTParty.get("#{BASE_URI}#{page}"))
     subchapters = doc.css('h3')
     subchapters.each do |subchapter|
+      doc.css('h4')[0..-2].each do |subsubchapter|
+        subsubchapter.next_sibling.next_sibling.css('li').each do |node|
+          attrs = parse_li(node).merge(opts)
+          create_law(attrs.merge(
+            subchapter: subchapter.text,
+            subsubchapter: subsubchapter.text
+          ))
+        end
+      end
       nodes = subchapter.next_sibling.next_sibling.css('li')
       nodes << subchapter.next_sibling.next_sibling if nodes.empty?
       nodes.each do |node|

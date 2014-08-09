@@ -1,8 +1,12 @@
 .chapter
   %h2= "#{@chapter.ordinal}. #{@chapter.name}"
-  - @laws.each do |subchapter, laws|
-    %h4= subchapter
-    %ul
-      - laws.each do |law|
-        %li
-          %a{href: show_law_path(law.id)}= law.name
+  - @laws.each do |subchapter, subsubchapter_laws|
+    - unless subchapter.nil?
+      %h4= subchapter
+    - subsubchapter_laws.each do |subsubchapter, laws|
+      -unless subsubchapter.nil?
+        %h5= subsubchapter
+      %ul
+        - laws.each do |law|
+          %li
+            %a{href: show_law_path(law.id)}= law.name

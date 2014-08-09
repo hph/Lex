@@ -5,6 +5,6 @@ class ChaptersController < ApplicationController
 
   def show
     @chapter = Chapter.find(params[:id])
-    @laws = @chapter.laws.group_by(&:subchapter)
+    @laws = @chapter.laws_by_subchapters_and_subsubchapters
   end
 end
