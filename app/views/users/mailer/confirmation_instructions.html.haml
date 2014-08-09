@@ -1,3 +1,3 @@
-%p Welcome #{@email}!
-%p You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+%p Velkomin(n) #{@email}!
+%p Þú getur staðfest netfangið og aðganginn þinn í gegnum neðangreindan hlekk:
+%p= link_to 'Staðfesta aðgang', confirmation_url(@resource, confirmation_token: @token)

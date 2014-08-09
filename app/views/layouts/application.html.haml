@@ -9,5 +9,20 @@
     = csrf_meta_tags
     = stylesheet_link_tag 'application'
   %body
-    = yield
+    .navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          %a.navbar-brand(href='/') Lex
+          %button.navbar-toggle(type='button' data-toggle='collapse' data-target='.navbar-collapse')
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              .navbar-btn
+                %a.btn.btn-default{href: new_user_session_path} Innskráning
+    .container.content
+      = yield
     = javascript_include_tag 'application'
