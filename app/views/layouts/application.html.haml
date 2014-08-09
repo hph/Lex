@@ -20,9 +20,15 @@
             %span.icon-bar
         .navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
-            %li
-              .navbar-btn
-                %a.btn.btn-default{href: new_user_session_path} Innskráning
+            - if user_signed_in?
+              %li
+                .navbar-btn
+                  %a#log-out.btn.btn-default(data-href="#{destroy_user_session_path}") Útskrá
+            - else
+              %li
+                .navbar-btn
+                  %a.btn.btn-default{href: new_user_session_path} Innskráning
     .container.content
       = yield
+    %script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js')
     = javascript_include_tag 'application'
