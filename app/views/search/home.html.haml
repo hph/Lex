@@ -1,0 +1,12 @@
+.home
+  %h1 Lex
+  .row.search
+    .col-md-offset-3.col-md-6
+      %form(action='/search')
+        .input-group
+          %input.form-control(type='text' placeholder='Leit í lagasafni' autofocus)
+          %span.input-group-btn
+            %button.btn.btn-default(type='submit') Leit
+      %ul.list-inline.small
+        %li
+          %a{href: chapters_path} Kaflar lagasafns

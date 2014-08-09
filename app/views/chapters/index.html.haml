@@ -1,0 +1,10 @@
+.chapters
+  - if @chapters.empty?
+    %p No chapters to show; run `rake db:seed` and reload this page.
+  - else
+    %h2 Kaflar lagasafns
+    .two-columns
+      %ol
+        - @chapters.all.each do |chapter|
+          %li
+            %a{href: show_chapter_path(chapter.id)}= chapter.name

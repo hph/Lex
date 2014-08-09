@@ -1,7 +1,0 @@
-- if @laws.empty?
-  %p No laws to show; run `rake db:seed` and reload this page.
-- else
-  %ul
-  - @laws.all.each do |law|
-    %li
-      %a{href: law_path(law.id)}= law.name

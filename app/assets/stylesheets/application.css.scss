@@ -7,3 +7,36 @@
 .content {
   margin-top: 50px;
 }
+
+.home {
+  h1 {
+    margin: 150px 0px 70px 0px;
+    text-align: center;
+  }
+
+  .search {
+    ul {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    input, button {
+      border-radius: 0px;
+    }
+  }
+}
+
+.chapters, .chapter {
+  h2 {
+    margin: 45px 0px 35px 0px;
+  }
+}
+
+.two-columns {
+  -moz-column-count: 2;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 20px;
+  column-count: 2;
+  column-gap: 20px;
+}

@@ -1,0 +1,6 @@
+.chapter
+  %h2= "#{@chapter.ordinal + 1}. #{@chapter.name}"
+  %ul
+    - @chapter.laws.each do |law|
+      %li
+        %a{href: show_law_path(law.id)}= law.name
