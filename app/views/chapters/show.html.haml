@@ -4,7 +4,7 @@
     - unless subchapter.nil?
       %h4= subchapter
     - subsubchapter_laws.each do |subsubchapter, laws|
-      -unless subsubchapter.nil?
+      - unless subsubchapter.nil?
         %h5= subsubchapter
       %ul
         - laws.each do |law|
