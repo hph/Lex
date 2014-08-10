@@ -40,10 +40,14 @@ module Scraper
         end
       end
       nodes = subchapter.next_sibling.next_sibling.css('li')
-      nodes << subchapter.next_sibling.next_sibling if nodes.empty?
-      nodes.each do |node|
-        attrs = parse_li(node).merge(opts)
+      if nodes.empty?
+        attrs = parse_li(subchapter.next_sibling.next_sibling).merge(opts)
         create_law(attrs.merge(subchapter: subchapter.text))
+      else
+        nodes.each do |node|
+          attrs = parse_li(node).merge(opts)
+          create_law(attrs.merge(subchapter: subchapter.text))
+        end
       end
     end
     if subchapters.size == 0
@@ -55,12 +59,21 @@ module Scraper
 
   def self.parse_li(node)
     return {} if node.children.size <= 1
+    name = parse_name(node)
     ordinal_and_date = node.css('a').last.text.split
-    return {} if ordinal_and_date == ['Kaflar', 'lagasafns']
+    if ordinal_and_date == ['Kaflar', 'lagasafns']
+      # Special case for 1.d., which is not properly formatted.
+      if node.children[0].text == 'Lög um framkvæmd þjóðaratkvæðagreiðslna, '
+        name = node.children[0].text
+        ordinal_and_date = node.children[1].text.split
+      else
+        return {}
+      end
+    end
     date = if ordinal_and_date.size == 1
       "January #{ordinal_and_date.first}"
     else
-       Utils.gsub_month_is_to_en(ordinal_and_date.last(3).join(' '))
+      Utils.gsub_month_is_to_en(ordinal_and_date.last(3).join(' '))
     end
     begin
       ordinal = Integer(ordinal_and_date[1][/\d+/])
@@ -71,7 +84,7 @@ module Scraper
     end
     uri = node.children[1].attributes['href'].value
     {
-      name: parse_name(node),
+      name: name,
       original_uri: uri,
       ordinal: ordinal,
       date: date,
