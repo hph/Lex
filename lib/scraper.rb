@@ -64,7 +64,7 @@ module Scraper
     if ordinal_and_date == ['Kaflar', 'lagasafns']
       # Special case for 1.d., which is not properly formatted.
       if node.children[0].text == 'Lög um framkvæmd þjóðaratkvæðagreiðslna, '
-        name = node.children[0].text
+        name = node.children[0].text[0..-3]
         ordinal_and_date = node.children[1].text.split
       else
         return {}
