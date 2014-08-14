@@ -95,9 +95,9 @@ module Scraper
   end
 
   def self.parse_name(node)
-    text_children = node.children.map(&:text)
-    text_children.pop if text_children.last == "\n"
-    text_children.join.split(',')[0..-2].join
+    link_text = node.children.css('a').last.text
+    all_text = node.children.map(&:text).join
+    all_text[0..all_text.index(link_text) - 3]
   end
 
   def self.create_law(attrs)
